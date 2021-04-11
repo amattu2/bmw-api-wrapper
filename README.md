@@ -102,6 +102,15 @@ fetch("https://mygarage.bmwusa.com/bin/mybmw/getRecalls?targetVin=/vin/{VIN}&_=1
 });
 ```
 
+Interesting note, opening the link directly above, without replacing `{VIN}` with a valid VIN, breaks the BMW API and leaks the API key as well as a NHTSA endpoint.
+```
+Invalid uri 'https://nhtsa.bmwgroup.com/safetyrecall/resources/v1/api/bmwusa/vin/{VIN}?bmwusa_api_key=CSj6v9LmEVVQ4e7TPHMTqr7F': escaped absolute path not valid
+Cannot serve request to /bin/mybmw/getRecalls on this server
+```
+This API key doesn't change on refresh, which means it might be static? 
+
+Fetching content from the URL provided in the error message works when a valid VIN is present. The [mygarage.bmwusa.com] URL seems to only wrap the return value, so there might not be any value in using this private endpoint.
+
 ### Model Options
 [forward](https://mygarage.bmwusa.com/bin/api/forward?groupId=LDwJ4ZVsyNQGxmwoQ%2BJRpA%3D%3D&targetURL=%2Fmybmw%2Fresources%2Fvehicleprofile%2FgetvehicleFeatures&vin={VIN}&colorCode=0475&upholsteryCode=LCD1&lineMakeId=1)
 
