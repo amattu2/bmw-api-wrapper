@@ -1,0 +1,7 @@
+# Folders
+__pycache__/
+
+# Specific Files
+
+# File Types
+*.ini
