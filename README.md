@@ -312,3 +312,158 @@ Example response
    }
 }
 ```
+
+## [/warranty-and-service.html](https://mygarage.bmwusa.com/bin/mybmw/warranty-and-service?groupId={GROUP ID}&vin={VIN})
+
+```JSON
+{
+   "vinResponse":{
+      "tcuInfo":{
+         "tcuConveniencePlanExpireDate":{
+            "link":false,
+            "value":"00/00/0000"
+         },
+         "tcuExpireDate":{
+            "link":false,
+            "value":"00/00/0000"
+         },
+         "tcuMobileDirectoryNumber":"",
+         "tcuActivationStatus":"",
+         "tcuMobileIdentNumber":"",
+         "tcuSerialNumber":""
+      },
+      "contract":[
+         
+      ],
+      "eligibleContract":[
+         {
+            "expireOdometer":{
+               "expireOdometer":"999,999",
+               "odometerUnits":"M"
+            },
+            "contractType":"MP",
+            "vendor":"MP",
+            "msrp":"199.00",
+            "deductible":"",
+            "expireAge":"36",
+            "program":{
+               "programDescription":"UC OIL 36 MO/UNL MLS",
+               "code":"0000000500"
+            }
+         }
+      ],
+      "warranty":{
+         "warrantyTermDate":"MM/DD/YYYY",
+         "warrantyTermAge":"48",
+         "warrantyTermOdoMeter":{
+            "warrantyTermOdoMeter":"50,000",
+            "odometerUnits":"M"
+         },
+         "mfgWarrantyCoverage":[
+            {
+               "contractStatus":"EXPIRED",
+               "expireOdometer":{
+                  "expireOdometer":"50,000",
+                  "odometerUnits":"M"
+               },
+               "contractType":"WA",
+               "expireAge":"48",
+               "expireDate":"MM/DD/YYYY",
+               "program":{
+                  "programDescription":"New Vehicle Limited Warranty"
+               },
+               "enrollDate":"",
+               "effectiveDate":"MM/DD/YYYY"
+            },
+            {
+               "contractStatus":"EXPIRED",
+               "expireOdometer":{
+                  "expireOdometer":"80,000",
+                  "odometerUnits":"M"
+               },
+               "contractType":"FE",
+               "expireAge":"96",
+               "expireDate":"MM/DD/YYYY",
+               "program":{
+                  "programDescription":"Federal Emissions 8/80 FE 96 MO/80K MLS"
+               },
+               "enrollDate":"MM/DD/YYYY",
+               "effectiveDate":"MM/DD/YYYY"
+            },
+            {
+               "contractType":"CA",
+               "program":{
+                  "dcsnetUrl":"https://dealerserviceclaimsus-gf4.bmwgroup.net/WKPEmissionPortal/ng/#emissionportal",
+                  "programDescription":"California Emissions",
+                  "message":"Vehicle may qualify for California Emissions Coverage.  Please verify if the vehicle was sold or is registered in a California Emissions Covered State (AZ,CA,CT,DE,MA,MD,ME,NJ,NM,NY,OR,PA,RI,VT,WA). Please confirm model year, selling state and current registration of the vehicle  and  click below link to determine coverage.",
+                  "infonetUrl":"https://dealerserviceclaimsus-gf4.bmwgroup.net/WKPEmissionPortal/ng/#emissionportal"
+               }
+            }
+         ]
+      },
+      "retailInfo":{
+         "centerId":"",
+         "currentAge":"",
+         "address":{
+            "city":"",
+            "phone":"",
+            "address1":"",
+            "postalCode":"",
+            "state":""
+         },
+         "locationId":"01",
+         "retailDate":"MM/DD/YYYY",
+         "inServiceDate":"MM/DD/YYYY",
+         "centerName":""
+      },
+      "vehicle":{
+         "vinMsrp":"50620.0",
+         "naModelCodeDesc":{
+            "code":"0933",
+            "value":"335i Coupe"
+         },
+         "interiorColor":{
+            "code":"LCD1",
+            "value":"Coral Red/Black Dakota Leather"
+         },
+         "exteriorColor":{
+            "code":"475",
+            "value":"Black Sapphire Metallic"
+         },
+         "agModelCodeDesc":{
+            "code":"WB73",
+            "value":"335i Coupe"
+         },
+         "vehicleProdDate":"YYYY/MM",
+         "lineMakeDesc":{
+            "code":"01",
+            "value":"BMW Car"
+         },
+         "vin":"",
+         "chassis":"",
+         "modelYear":"2009",
+         "motorType":"N54 ",
+         "engineSeries":"E92 "
+      },
+      "wholeSaleInfo":{
+         "centerId":"",
+         "address":{
+            "city":"",
+            "phone":"",
+            "address1":"",
+            "postalCode":"",
+            "state":" "
+         },
+         "locationId":"",
+         "wholeSaleDate":"MM/DD/YYYY",
+         "centerName":""
+      },
+      "status":null
+   },
+   "overallStatus":{
+      "statusDescription":"COMPLETED SUCCESSFULLY",
+      "sclass":"I",
+      "statusCode":"0"
+   }
+}
+```
