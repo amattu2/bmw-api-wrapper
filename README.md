@@ -313,7 +313,7 @@ Example response
 }
 ```
 
-## [/warranty-and-service.html](https://mygarage.bmwusa.com/bin/mybmw/warranty-and-service?groupId={GROUP ID}&vin={VIN})
+## [/warranty-and-service.html](https://mygarage.bmwusa.com/bin/mybmw/warranty-and-service?groupId=GROUP_ID&vin=VIN)
 
 ```JSON
 {
