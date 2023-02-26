@@ -280,7 +280,7 @@
     "method": "POST",
     "sortNum": 37500,
     "created": "2023-02-26T16:45:21.845Z",
-    "modified": "2023-02-26T20:13:09.956Z",
+    "modified": "2023-02-26T22:30:01.063Z",
     "headers": [
       {
         "name": "user-agent",
@@ -307,7 +307,7 @@
         },
         {
           "name": "code",
-          "value": "UKVCe3iRyu9otlXJ-Azb6DFDn4w"
+          "value": "pWWNL9BXSPkcdIWvGZ4ISrIMpQI"
         },
         {
           "name": "code_verifier",
@@ -350,6 +350,12 @@
         "custom": "json.id_token",
         "action": "setto",
         "value": "{{idToken}}"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.gcid",
+        "action": "setto",
+        "value": "{{gcid}}"
       }
     ]
   },
@@ -615,7 +621,7 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2023-02-26T21:02:23.615Z",
-    "modified": "2023-02-26T21:04:04.038Z",
+    "modified": "2023-02-26T22:25:49.659Z",
     "headers": [
       {
         "name": "Accept",
@@ -652,7 +658,8 @@
         "action": "contains",
         "value": "application/json"
       }
-    ]
+    ],
+    "docs": "This endpoint uses an internal API and a leaked API key; Prefer the Recalls request."
   },
   {
     "_id": "8be6d47d-df91-415b-bac2-19bdd3bd7d68",
@@ -691,5 +698,387 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "433d0d30-5c07-481b-8038-78c110de46d9",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "bfe3ec8c-ff1c-409a-ace6-cb64370de262",
+    "name": "Warranty and Service",
+    "url": "https://mygarage.bmwusa.com/bin/mybmw/warranty-and-service?vin={{vin}}&mileage=999999&locationID=01&centerCode=36760&isMpuEligible=false",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-02-26T21:37:53.957Z",
+    "modified": "2023-02-26T22:42:27.691Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [
+      {
+        "name": "vin",
+        "value": "{{vin}}",
+        "isPath": false
+      },
+      {
+        "name": "mileage",
+        "value": "999999",
+        "isPath": false
+      },
+      {
+        "name": "locationID",
+        "value": "01",
+        "isPath": false
+      },
+      {
+        "name": "centerCode",
+        "value": "36760",
+        "isPath": false
+      },
+      {
+        "name": "isMpuEligible",
+        "value": "false",
+        "isPath": false
+      }
+    ],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      }
+    ]
+  },
+  {
+    "_id": "60cbab9d-737e-4855-ad38-41940339cf94",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "bfe3ec8c-ff1c-409a-ace6-cb64370de262",
+    "name": "Recalls",
+    "url": "https://mygarage.bmwusa.com/bin/my-garage-services/recalls",
+    "method": "GET",
+    "sortNum": 5000,
+    "created": "2023-02-26T22:16:10.591Z",
+    "modified": "2023-02-26T22:30:32.889Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "Authorization",
+        "value": "gcid={{gcid}},token={{accessToken}},vin={{vin}}"
+      },
+      {
+        "name": "Accept-Language",
+        "value": "en-US"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      }
+    ]
+  },
+  {
+    "_id": "dd0b87da-7286-41e8-a619-e8a42e06a9da",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "bfe3ec8c-ff1c-409a-ace6-cb64370de262",
+    "name": "Mapping",
+    "url": "https://mygarage.bmwusa.com/bin/my-garage-services/connected-drive/mapping?brand=BM&property=relationship",
+    "method": "GET",
+    "sortNum": 7500,
+    "created": "2023-02-26T22:26:38.446Z",
+    "modified": "2023-02-26T22:30:16.187Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "Authorization",
+        "value": "gcid={{gcid}},token={{accessToken}},vin={{vin}}"
+      },
+      {
+        "name": "Accept-Language",
+        "value": "en-US"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [
+      {
+        "name": "brand",
+        "value": "BM",
+        "isPath": false
+      },
+      {
+        "name": "property",
+        "value": "relationship",
+        "isPath": false
+      }
+    ],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      }
+    ]
+  },
+  {
+    "_id": "576ffc0e-fd5e-4fcc-b141-66dd2ef1e31b",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "1b2c36d4-d610-4e96-aab9-d14691bfe29b",
+    "name": "Vehicle Profile",
+    "url": "https://mygarage.bmwusa.com/bin/api/forward?gcid={{gcid}}&targetURL=/mybmw/resources/vehicleprofile/getvehicleProfile&vin={{vin}}",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-02-26T22:47:27.026Z",
+    "modified": "2023-02-26T22:50:55.399Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [
+      {
+        "name": "gcid",
+        "value": "{{gcid}}",
+        "isPath": false
+      },
+      {
+        "name": "targetURL",
+        "value": "/mybmw/resources/vehicleprofile/getvehicleProfile",
+        "isPath": false
+      },
+      {
+        "name": "vin",
+        "value": "{{vin}}",
+        "isPath": false
+      }
+    ],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      }
+    ]
+  },
+  {
+    "_id": "3b68f91c-3981-4eb1-94d9-6062e291d917",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "bfe3ec8c-ff1c-409a-ace6-cb64370de262",
+    "name": "Subscription Offers",
+    "url": "https://mygarage.bmwusa.com/bin/my-garage-services/offers?brand=BMW",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2023-02-26T22:53:47.760Z",
+    "modified": "2023-02-26T22:56:43.796Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "Authorization",
+        "value": "gcid={{gcid}},token={{accessToken}},vin={{vin}}"
+      },
+      {
+        "name": "Accept-Language",
+        "value": "en-US"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [
+      {
+        "name": "brand",
+        "value": "BMW",
+        "isPath": false
+      }
+    ],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      }
+    ]
+  },
+  {
+    "_id": "bedcdf7f-4c3e-4012-806e-87f624f35ae6",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "1b2c36d4-d610-4e96-aab9-d14691bfe29b",
+    "name": "CD",
+    "url": "https://mygarage.bmwusa.com/bin/mybmw/cd?vin={{vin}}&target=getPhoneNumber",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-02-26T23:03:35.381Z",
+    "modified": "2023-02-26T23:08:34.580Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "Authorization",
+        "value": "gcid={{gcid}},token={{accessToken}},vin={{vin}}",
+        "isDisabled": true
+      },
+      {
+        "name": "Accept-Language",
+        "value": "en-US",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [
+      {
+        "name": "vin",
+        "value": "{{vin}}",
+        "isPath": false
+      },
+      {
+        "name": "target",
+        "value": "getPhoneNumber",
+        "isPath": false
+      }
+    ],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      }
+    ]
+  },
+  {
+    "_id": "95c26375-56d6-42a9-a713-c9ef673938f1",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "1b2c36d4-d610-4e96-aab9-d14691bfe29b",
+    "name": "Security Question",
+    "url": "https://mygarage.bmwusa.com/bin/my-garage-services/connected-drive/mapping?brand=BM&property=relationship",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-02-26T23:11:54.085Z",
+    "modified": "2023-02-26T23:14:44.316Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "Authorization",
+        "value": "gcid={{gcid}},token={{accessToken}},vin={{vin}}"
+      },
+      {
+        "name": "Accept-Language",
+        "value": "en-US"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [
+      {
+        "name": "brand",
+        "value": "BM",
+        "isPath": false
+      },
+      {
+        "name": "property",
+        "value": "relationship",
+        "isPath": false
+      }
+    ],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      }
+    ]
   }
 ]
