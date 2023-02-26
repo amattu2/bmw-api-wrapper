@@ -1,0 +1,695 @@
+[
+  {
+    "_id": "f8a32da3-ff24-47ee-a8db-1f88317456af",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "ff52b8de-d8d2-406b-9944-74f745ff4f66",
+    "name": "OAuth Config",
+    "url": "https://{{server_url}}/eadrax-ucs/v1/presentation/oauth/config",
+    "method": "GET",
+    "sortNum": 7500,
+    "created": "2023-02-26T15:11:55.369Z",
+    "modified": "2023-02-26T16:48:42.408Z",
+    "headers": [
+      {
+        "name": "ocp-apim-subscription-key",
+        "value": "{{ocp-apim-subscription-key}}"
+      },
+      {
+        "name": "bmw-session-id",
+        "value": "{{#guid}}"
+      },
+      {
+        "name": "x-identity-provider",
+        "value": "gcdm"
+      },
+      {
+        "name": "x-correlation-id",
+        "value": "{{#guid}}"
+      },
+      {
+        "name": "bmw-correlation-id",
+        "value": "{{#guid}}"
+      },
+      {
+        "name": "user-agent",
+        "value": "Dart/2.16 (dart:io)"
+      },
+      {
+        "name": "x-user-agent",
+        "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.tokenEndpoint",
+        "action": "setto",
+        "value": "{{tokenEndpoint}}"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.clientId",
+        "action": "setto",
+        "value": "{{clientId}}"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.returnUrl",
+        "action": "setto",
+        "value": "{{returnUrl}}"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.scopes | join(\" \")",
+        "action": "setto",
+        "value": "{{scopes}}"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.clientSecret",
+        "action": "setto",
+        "value": "{{clientSecret}}"
+      }
+    ],
+    "docs": "`ocp-apim-subscription-key` can also be `Authenticate`\n\n`BMW-session-id` is a random GUID with no meaning\n\n`x-correlation-id` and `bmw-correlation-id` can be identical or random GUIDs.\n\n`user-agent` must be `Dart/2.16 (dart:io)`\n\n`x-user-agent` must be some variant of the current value. Needs further testing."
+  },
+  {
+    "_id": "afa7a701-616b-4056-a759-67cea131e1f1",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "ff52b8de-d8d2-406b-9944-74f745ff4f66",
+    "name": "Authenticate (1/2)",
+    "url": "{{tokenEndpoint | replace(\"/token\", \"/authenticate\")}}",
+    "method": "POST",
+    "sortNum": 17500,
+    "created": "2023-02-26T15:50:37.572Z",
+    "modified": "2023-02-26T20:08:37.226Z",
+    "headers": [
+      {
+        "name": "user-agent",
+        "value": "Dart/2.16 (dart:io)"
+      },
+      {
+        "name": "x-user-agent",
+        "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "client_id",
+          "value": "{{clientId}}"
+        },
+        {
+          "name": "response_type",
+          "value": "code"
+        },
+        {
+          "name": "redirect_uri",
+          "value": "{{returnUrl}}"
+        },
+        {
+          "name": "state",
+          "value": "QT3Y2qr0K0jHZ25K6w_5.2"
+        },
+        {
+          "name": "nonce",
+          "value": "login_nonce"
+        },
+        {
+          "name": "scope",
+          "value": "{{scopes}}"
+        },
+        {
+          "name": "code_challenge",
+          "value": "OUuUfVLRonZudSTVMsBsM_RQuuR4wpVHBYHQvAAgQxk"
+        },
+        {
+          "name": "code_challenge_method",
+          "value": "S256"
+        },
+        {
+          "name": "grant_type",
+          "value": "authorization_code"
+        },
+        {
+          "name": "username",
+          "value": "{{email}}"
+        },
+        {
+          "name": "password",
+          "value": "{{password}}"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.redirect_to",
+        "action": "setto",
+        "value": "{{authorization}}"
+      }
+    ]
+  },
+  {
+    "_id": "db96faa1-4685-4926-a2c3-197a1ad39189",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "ff52b8de-d8d2-406b-9944-74f745ff4f66",
+    "name": "Authenticate (2/2)",
+    "url": "{{tokenEndpoint | replace(\"/token\", \"/authenticate\")}}",
+    "method": "POST",
+    "sortNum": 27500,
+    "created": "2023-02-26T16:19:23.722Z",
+    "modified": "2023-02-26T20:09:23.174Z",
+    "headers": [
+      {
+        "name": "user-agent",
+        "value": "Dart/2.16 (dart:io)"
+      },
+      {
+        "name": "x-user-agent",
+        "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "client_id",
+          "value": "{{clientId}}"
+        },
+        {
+          "name": "response_type",
+          "value": "code"
+        },
+        {
+          "name": "redirect_uri",
+          "value": "{{returnUrl}}"
+        },
+        {
+          "name": "state",
+          "value": "QT3Y2qr0K0jHZ25K6w_5.2"
+        },
+        {
+          "name": "nonce",
+          "value": "login_nonce"
+        },
+        {
+          "name": "scope",
+          "value": "{{scopes}}"
+        },
+        {
+          "name": "code_challenge",
+          "value": "OUuUfVLRonZudSTVMsBsM_RQuuR4wpVHBYHQvAAgQxk"
+        },
+        {
+          "name": "code_challenge_method",
+          "value": "S256"
+        },
+        {
+          "name": "authorization",
+          "value": "hdAiDmpk4SSRCaR9rQMy40HyviA.*AAJTSQACMDIAAlNLABx3bERNT0V1d0J0MXlKOER1MXhJSFpIS1FvcHM9AAR0eXBlAANDVFMAAlMxAAIwMQ..*"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "302"
+      },
+      {
+        "type": "custom-header",
+        "custom": "location",
+        "action": "contains",
+        "value": "code="
+      }
+    ]
+  },
+  {
+    "_id": "1203da96-975c-4c51-a371-cd6c1f88fdd5",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "ff52b8de-d8d2-406b-9944-74f745ff4f66",
+    "name": "Token",
+    "url": "{{tokenEndpoint}}",
+    "method": "POST",
+    "sortNum": 37500,
+    "created": "2023-02-26T16:45:21.845Z",
+    "modified": "2023-02-26T20:13:09.956Z",
+    "headers": [
+      {
+        "name": "user-agent",
+        "value": "Dart/2.16 (dart:io)"
+      },
+      {
+        "name": "x-user-agent",
+        "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "redirect_uri",
+          "value": "{{returnUrl}}"
+        },
+        {
+          "name": "code",
+          "value": "UKVCe3iRyu9otlXJ-Azb6DFDn4w"
+        },
+        {
+          "name": "code_verifier",
+          "value": "S1LGmcbT24M0.33i0K9TQVMh94MZFB7VOzf9qVotpc6BxJ3GeZxqtq~~B3wO4KRvS7mBRUFZpKBRpgUqc~UKn7"
+        },
+        {
+          "name": "grant_type",
+          "value": "authorization_code"
+        }
+      ]
+    },
+    "auth": {
+      "type": "basic",
+      "basic": {
+        "username": "{{clientId}}",
+        "password": "{{clientSecret}}"
+      }
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.access_token",
+        "action": "setto",
+        "value": "{{accessToken}}"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.refresh_token",
+        "action": "setto",
+        "value": "{{refreshToken}}"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.id_token",
+        "action": "setto",
+        "value": "{{idToken}}"
+      }
+    ]
+  },
+  {
+    "_id": "487c03f4-da0e-4af9-9dee-9c46b65cf4df",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "446dfa8b-b5a3-4627-9201-b81800ff9a21",
+    "name": "State",
+    "url": "https://{{server_url}}/eadrax-vcs/v4/vehicles/state",
+    "method": "GET",
+    "sortNum": 5000,
+    "created": "2023-02-26T20:16:44.860Z",
+    "modified": "2023-02-26T20:45:38.985Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "x-correlation-id",
+        "value": "{{#guid}}"
+      },
+      {
+        "name": "bmw-correlation-id",
+        "value": "{{#guid}}"
+      },
+      {
+        "name": "user-agent",
+        "value": "Dart/2.16 (dart:io)"
+      },
+      {
+        "name": "x-user-agent",
+        "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+      },
+      {
+        "name": "bmw-vin",
+        "value": "{{vin}}"
+      },
+      {
+        "name": "bmw-current-date",
+        "value": "{{#date, 'YYYY-MM-DD hh:mm:ss'}}"
+      }
+    ],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{accessToken}}"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      }
+    ]
+  },
+  {
+    "_id": "71c354ca-6927-4e58-9c82-34cc6318842b",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "446dfa8b-b5a3-4627-9201-b81800ff9a21",
+    "name": "Image",
+    "url": "https://{{server_url}}/eadrax-ics/v3/presentation/vehicles/{vin}/images?carView=SideViewLeft",
+    "method": "GET",
+    "sortNum": 7500,
+    "created": "2023-02-26T20:30:38.568Z",
+    "modified": "2023-02-26T20:45:31.477Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "x-correlation-id",
+        "value": "{{#guid}}"
+      },
+      {
+        "name": "bmw-correlation-id",
+        "value": "{{#guid}}"
+      },
+      {
+        "name": "user-agent",
+        "value": "Dart/2.16 (dart:io)"
+      },
+      {
+        "name": "x-user-agent",
+        "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+      },
+      {
+        "name": "bmw-vin",
+        "value": "{{vin}}"
+      },
+      {
+        "name": "bmw-current-date",
+        "value": "{{#date, 'YYYY-MM-DD hh:mm:ss'}}"
+      }
+    ],
+    "params": [
+      {
+        "name": "vin",
+        "value": "{{vin}}",
+        "isPath": true
+      },
+      {
+        "name": "carView",
+        "value": "VehicleStatus",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "carView",
+        "value": "AngleSideViewForty",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "carView",
+        "value": "AngleSideViewSixty",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "carView",
+        "value": "FrontView",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "carView",
+        "value": "RearView",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "carView",
+        "value": "SideViewLeft",
+        "isPath": false
+      },
+      {
+        "name": "carView",
+        "value": "Dashboard",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "carView",
+        "value": "DriverDoor",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "carView",
+        "value": "FrontLeft",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "carView",
+        "value": "FrontRight",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "carView",
+        "value": "RearRight",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "carView",
+        "value": "RearLeft",
+        "isDisabled": true,
+        "isPath": false
+      }
+    ],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{accessToken}}"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "image"
+      }
+    ]
+  },
+  {
+    "_id": "1bf23b86-2ea6-470d-8ca0-32ed67f0874f",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "446dfa8b-b5a3-4627-9201-b81800ff9a21",
+    "name": "Vehicles",
+    "url": "https://{{server_url}}/eadrax-vcs/v4/vehicles",
+    "method": "GET",
+    "sortNum": 2500,
+    "created": "2023-02-26T20:31:53.232Z",
+    "modified": "2023-02-26T20:45:44.941Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "x-correlation-id",
+        "value": "{{#guid}}"
+      },
+      {
+        "name": "bmw-correlation-id",
+        "value": "{{#guid}}"
+      },
+      {
+        "name": "user-agent",
+        "value": "Dart/2.16 (dart:io)"
+      },
+      {
+        "name": "x-user-agent",
+        "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+      },
+      {
+        "name": "bmw-current-date",
+        "value": "{{#date, 'YYYY-MM-DD hh:mm:ss'}}"
+      }
+    ],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{accessToken}}"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      }
+    ]
+  },
+  {
+    "_id": "71a45f3c-883a-48bc-8d64-649c0cc27591",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "bfe3ec8c-ff1c-409a-ace6-cb64370de262",
+    "name": "NHTSA Recalls",
+    "url": "https://nhtsa.bmwgroup.com/safetyrecall/resources/v1/api/bmwusa/vin/{vin}?bmwusa_api_key=CSj6v9LmEVVQ4e7TPHMTqr7F",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-02-26T21:02:23.615Z",
+    "modified": "2023-02-26T21:04:04.038Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [
+      {
+        "name": "vin",
+        "value": "{{vin}}",
+        "isPath": true
+      },
+      {
+        "name": "bmwusa_api_key",
+        "value": "CSj6v9LmEVVQ4e7TPHMTqr7F",
+        "isPath": false
+      }
+    ],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      }
+    ]
+  },
+  {
+    "_id": "8be6d47d-df91-415b-bac2-19bdd3bd7d68",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "bfe3ec8c-ff1c-409a-ace6-cb64370de262",
+    "name": "Value Service",
+    "url": "https://mygarage.bmwusa.com/content/dam/mybmw/value-service/valueService.json",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2023-02-26T21:04:47.320Z",
+    "modified": "2023-02-26T21:04:53.520Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "64b328aa-a01b-442e-94da-9beba440d72a",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "bfe3ec8c-ff1c-409a-ace6-cb64370de262",
+    "name": "Endpoints",
+    "url": "https://mygarage.bmwusa.com/content/dam/mybmw/resources/managevehicles/findVehicleByVIN",
+    "method": "GET",
+    "sortNum": 65000,
+    "created": "2023-02-26T21:09:08.024Z",
+    "modified": "2023-02-26T21:09:08.024Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "colName": "BMWUSA.com",
+    "created": "2023-02-24T22:36:12.827Z",
+    "sortNum": 10000,
+    "folders": [
+      {
+        "_id": "ff52b8de-d8d2-406b-9944-74f745ff4f66",
+        "name": "Authentication",
+        "containerId": "984c0bf1-29e8-4023-a643-cdef2bd18109",
+        "created": "2023-02-24T22:57:10.338Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "446dfa8b-b5a3-4627-9201-b81800ff9a21",
+        "name": "Vehicles",
+        "containerId": "984c0bf1-29e8-4023-a643-cdef2bd18109",
+        "created": "2023-02-26T15:43:38.482Z",
+        "sortNum": 20000
+      },
+      {
+        "_id": "bfe3ec8c-ff1c-409a-ace6-cb64370de262",
+        "name": "MyGarage",
+        "containerId": "",
+        "created": "2023-02-26T21:02:07.891Z",
+        "sortNum": 30000
+      },
+      {
+        "_id": "984c0bf1-29e8-4023-a643-cdef2bd18109",
+        "name": "API",
+        "containerId": "",
+        "created": "2023-02-26T21:06:10.786Z",
+        "sortNum": 50000
+      }
+    ]
+  }
+]

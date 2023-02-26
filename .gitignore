@@ -1,7 +1,10 @@
 # Folders
 __pycache__/
+resources/
 
 # Specific Files
+thunderEnvironment.json
+thunderActivity.json
 
 # File Types
 *.ini
