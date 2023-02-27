@@ -5,11 +5,32 @@ As with any project of this type, it's a continuous work-in-progress.
 
 If you have discovered an issue with the HTTP collection, or found an endpoint not listed or documented here, please open a PR or new Issue.
 
+This project is focused on supporting the North American APIs, but will ideally work with european and asian APIs as well. Generally speaking, it's just a minor URL change for other markets.
+
+*Read on to understand more about this project.*
+
+## What is ConnectedDrive?
+
+Almost every modern BMW, Mini, Rolls Royce, or Toyota Supra (2020+) is equipped with a product called ConnectedDrive or Connect. This featureset allows native connectivity to your vehicle through your smartphone or via other channels (websites, services, etc). In some cases, generally with newer models, ConnectedDrive allows for insights into your current vehicles status (charging/gas, mileage, location), as well as remote control (unlock/horn/remotestart).
+
+ConnectedDrive has a plethora of hidden web-APIs that is used to receive information or dispatch commands to your vehicle remotely. The goal of this project is to explore all of those endpoints, document how to use them, and to provide a interface for doing so (i.e. Postman or Thunder Test).
+
+Due to the fact that I can't possibly test against every single BMW on the road, it should be understood that the documentation may not be 100% accurate, but feel free to contribute any knowledge or corrections you have.
+
+[Read more](https://www.bmwusa.com/explore/connecteddrive.html)
+
+## What is My Garage
+
+My Garage is a facet available across BMW companies (read: Mini, ...) to access information about your vehicle through a web interface. Similar to the BMW ConnectedDrive situation, each brand has it's own interface, but it's generally supported by the same backend. The My Garage service is included in this repo because it offers additional endpoints and datasets not available solely through the ConnectedDrive channels. The authentication mechanisms are identical between ConnectedDrive and My Garage.
+
+[Mini Cooper My Garage](https://mygarage.miniusa.com/)
+[BMW My Garage](https://mygarage.bmwusa.com/)
+
 # Usage
 
 ## ThunderClient / Postman
 
-To use the Thunder Client (Visual Studio Code extension) or Postman HTTP collection, see the [.vscode](/.vscode/thunder-tests) folder.
+To use the Thunder Client (Visual Studio Code extension) or Postman HTTP collection, see the [.vscode](/.vscode) folder.
 
 You can import the collection via the Thunder Client GUI.
 
@@ -25,4 +46,4 @@ The resources below were used as a reference during creation of this project. Bi
 
 # Disclosure
 
-This project is not affiliated with or endorsed by BMW, Mini Cooper, or any other related brand. It's likely that usage of this project is against some TOS. Use at your own risk.
+This project is not affiliated with BMW, Mini Cooper, or any other related brand. It's likely that usage of this project is against some TOS. Use at your own risk.

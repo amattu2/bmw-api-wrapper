@@ -1,7 +1,7 @@
 [
   {
     "_id": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
-    "colName": "BMWUSA.com",
+    "colName": "Collection",
     "created": "2023-02-24T22:36:12.827Z",
     "sortNum": 10000,
     "folders": [
@@ -13,22 +13,15 @@
         "sortNum": 15000
       },
       {
-        "_id": "446dfa8b-b5a3-4627-9201-b81800ff9a21",
-        "name": "Vehicles",
-        "containerId": "984c0bf1-29e8-4023-a643-cdef2bd18109",
-        "created": "2023-02-26T15:43:38.482Z",
-        "sortNum": 20000
-      },
-      {
         "_id": "bfe3ec8c-ff1c-409a-ace6-cb64370de262",
-        "name": "MyGarage",
+        "name": "My Garage",
         "containerId": "",
         "created": "2023-02-26T21:02:07.891Z",
         "sortNum": 30000
       },
       {
         "_id": "984c0bf1-29e8-4023-a643-cdef2bd18109",
-        "name": "Vehicle Communication Service",
+        "name": "Vehicle Communication Service (VCS)",
         "containerId": "",
         "created": "2023-02-26T21:06:10.786Z",
         "sortNum": 50000
@@ -39,6 +32,13 @@
         "containerId": "",
         "created": "2023-02-26T22:50:06.351Z",
         "sortNum": 60000
+      },
+      {
+        "_id": "3ff89700-f1fc-4706-9af2-2df3312407ec",
+        "name": "Dealers",
+        "containerId": "",
+        "created": "2023-02-26T23:36:03.009Z",
+        "sortNum": 55000
       }
     ]
   }

@@ -1,0 +1,1034 @@
+{
+    "info": {
+        "name": "Collection",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "item": [
+                {
+                    "name": "OAuth Config",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://cocoapi.bmwgroup.us/eadrax-ucs/v1/presentation/oauth/config",
+                            "path": [
+                                "eadrax-ucs",
+                                "v1",
+                                "presentation",
+                                "oauth",
+                                "config"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "cocoapi",
+                                "bmwgroup",
+                                "us"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "ocp-apim-subscription-key",
+                                "value": "{{ocp-apim-subscription-key}}"
+                            },
+                            {
+                                "key": "bmw-session-id",
+                                "value": "{{#guid}}"
+                            },
+                            {
+                                "key": "x-identity-provider",
+                                "value": "gcdm"
+                            },
+                            {
+                                "key": "x-correlation-id",
+                                "value": "{{#guid}}"
+                            },
+                            {
+                                "key": "bmw-correlation-id",
+                                "value": "{{#guid}}"
+                            },
+                            {
+                                "key": "user-agent",
+                                "value": "Dart/2.16 (dart:io)"
+                            },
+                            {
+                                "key": "x-user-agent",
+                                "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Authenticate (1/2)",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{tokenEndpoint | replace(\"/token\", \"/authenticate\")}}",
+                            "path": [
+                                "token\", \"",
+                                "authenticate\")}}"
+                            ],
+                            "host": [
+                                "{{tokenEndpoint | replace(\""
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "user-agent",
+                                "value": "Dart/2.16 (dart:io)"
+                            },
+                            {
+                                "key": "x-user-agent",
+                                "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "client_id",
+                                    "value": "{{clientId}}"
+                                },
+                                {
+                                    "key": "response_type",
+                                    "value": "code"
+                                },
+                                {
+                                    "key": "redirect_uri",
+                                    "value": "{{returnUrl}}"
+                                },
+                                {
+                                    "key": "state",
+                                    "value": "QT3Y2qr0K0jHZ25K6w_5.2"
+                                },
+                                {
+                                    "key": "nonce",
+                                    "value": "login_nonce"
+                                },
+                                {
+                                    "key": "scope",
+                                    "value": "{{scopes}}"
+                                },
+                                {
+                                    "key": "code_challenge",
+                                    "value": "OUuUfVLRonZudSTVMsBsM_RQuuR4wpVHBYHQvAAgQxk"
+                                },
+                                {
+                                    "key": "code_challenge_method",
+                                    "value": "S256"
+                                },
+                                {
+                                    "key": "grant_type",
+                                    "value": "authorization_code"
+                                },
+                                {
+                                    "key": "username",
+                                    "value": "{{email}}"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "{{password}}"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Authenticate (2/2)",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{tokenEndpoint | replace(\"/token\", \"/authenticate\")}}",
+                            "path": [
+                                "token\", \"",
+                                "authenticate\")}}"
+                            ],
+                            "host": [
+                                "{{tokenEndpoint | replace(\""
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "user-agent",
+                                "value": "Dart/2.16 (dart:io)"
+                            },
+                            {
+                                "key": "x-user-agent",
+                                "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "client_id",
+                                    "value": "{{clientId}}"
+                                },
+                                {
+                                    "key": "response_type",
+                                    "value": "code"
+                                },
+                                {
+                                    "key": "redirect_uri",
+                                    "value": "{{returnUrl}}"
+                                },
+                                {
+                                    "key": "state",
+                                    "value": "QT3Y2qr0K0jHZ25K6w_5.2"
+                                },
+                                {
+                                    "key": "nonce",
+                                    "value": "login_nonce"
+                                },
+                                {
+                                    "key": "scope",
+                                    "value": "{{scopes}}"
+                                },
+                                {
+                                    "key": "code_challenge",
+                                    "value": "OUuUfVLRonZudSTVMsBsM_RQuuR4wpVHBYHQvAAgQxk"
+                                },
+                                {
+                                    "key": "code_challenge_method",
+                                    "value": "S256"
+                                },
+                                {
+                                    "key": "authorization",
+                                    "value": "LFmE7zi3BfP0KsDVwtvsOtpYpvM.*AAJTSQACMDIAAlNLABw2VHBsM0E3aFdzWXdjVHQ5UnpXaFZQdktDNnc9AAR0eXBlAANDVFMAAlMxAAIwMQ..*"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Token",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{tokenEndpoint}}",
+                            "host": [
+                                "{{tokenendpoint}}"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "user-agent",
+                                "value": "Dart/2.16 (dart:io)"
+                            },
+                            {
+                                "key": "x-user-agent",
+                                "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "redirect_uri",
+                                    "value": "{{returnUrl}}"
+                                },
+                                {
+                                    "key": "code",
+                                    "value": "y5tRuALl0u1y1XRTnsDs98br2JE"
+                                },
+                                {
+                                    "key": "code_verifier",
+                                    "value": "S1LGmcbT24M0.33i0K9TQVMh94MZFB7VOzf9qVotpc6BxJ3GeZxqtq~~B3wO4KRvS7mBRUFZpKBRpgUqc~UKn7"
+                                },
+                                {
+                                    "key": "grant_type",
+                                    "value": "authorization_code"
+                                }
+                            ]
+                        },
+                        "auth": {
+                            "type": "basic",
+                            "basic": [
+                                {
+                                    "key": "username",
+                                    "value": "{{clientId}}",
+                                    "type": "string"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "{{clientSecret}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "My Garage",
+            "item": [
+                {
+                    "name": "Recalls",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://mygarage.bmwusa.com/bin/my-garage-services/recalls",
+                            "path": [
+                                "bin",
+                                "my-garage-services",
+                                "recalls"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "mygarage",
+                                "bmwusa",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "gcid={{gcid}},token={{accessToken}},vin={{vin}}"
+                            },
+                            {
+                                "key": "Accept-Language",
+                                "value": "en-US"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Mapping",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://mygarage.bmwusa.com/bin/my-garage-services/connected-drive/mapping?brand=BM&property=relationship",
+                            "query": [
+                                {
+                                    "key": "brand",
+                                    "value": "BM"
+                                },
+                                {
+                                    "key": "property",
+                                    "value": "relationship"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "bin",
+                                "my-garage-services",
+                                "connected-drive",
+                                "mapping"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "mygarage",
+                                "bmwusa",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "gcid={{gcid}},token={{accessToken}},vin={{vin}}"
+                            },
+                            {
+                                "key": "Accept-Language",
+                                "value": "en-US"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "NHTSA Recalls",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://nhtsa.bmwgroup.com/safetyrecall/resources/v1/api/bmwusa/vin/:vin?bmwusa_api_key=CSj6v9LmEVVQ4e7TPHMTqr7F",
+                            "query": [
+                                {
+                                    "key": "bmwusa_api_key",
+                                    "value": "CSj6v9LmEVVQ4e7TPHMTqr7F"
+                                }
+                            ],
+                            "variable": [
+                                {
+                                    "key": "vin",
+                                    "value": "{{vin}}"
+                                }
+                            ],
+                            "path": [
+                                "safetyrecall",
+                                "resources",
+                                "v1",
+                                "api",
+                                "bmwusa",
+                                "vin",
+                                ":vin"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "nhtsa",
+                                "bmwgroup",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Warranty and Service",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://mygarage.bmwusa.com/bin/mybmw/warranty-and-service?vin={{vin}}&mileage=999999&locationID=01&centerCode=36760&isMpuEligible=false",
+                            "query": [
+                                {
+                                    "key": "vin",
+                                    "value": "{{vin}}"
+                                },
+                                {
+                                    "key": "mileage",
+                                    "value": "999999"
+                                },
+                                {
+                                    "key": "locationID",
+                                    "value": "01"
+                                },
+                                {
+                                    "key": "centerCode",
+                                    "value": "36760"
+                                },
+                                {
+                                    "key": "isMpuEligible",
+                                    "value": "false"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "bin",
+                                "mybmw",
+                                "warranty-and-service"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "mygarage",
+                                "bmwusa",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Subscription Offers",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://mygarage.bmwusa.com/bin/my-garage-services/offers?brand=BMW",
+                            "query": [
+                                {
+                                    "key": "brand",
+                                    "value": "BMW"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "bin",
+                                "my-garage-services",
+                                "offers"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "mygarage",
+                                "bmwusa",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "gcid={{gcid}},token={{accessToken}},vin={{vin}}"
+                            },
+                            {
+                                "key": "Accept-Language",
+                                "value": "en-US"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Value Service",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://mygarage.bmwusa.com/content/dam/mybmw/value-service/valueService.json",
+                            "path": [
+                                "content",
+                                "dam",
+                                "mybmw",
+                                "value-service",
+                                "valueService.json"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "mygarage",
+                                "bmwusa",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Endpoints",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://mygarage.bmwusa.com/content/dam/mybmw/resources/managevehicles/findVehicleByVIN",
+                            "path": [
+                                "content",
+                                "dam",
+                                "mybmw",
+                                "resources",
+                                "managevehicles",
+                                "findVehicleByVIN"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "mygarage",
+                                "bmwusa",
+                                "com"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Vehicle Communication Service (VCS)",
+            "item": [
+                {
+                    "name": "Vehicles",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://cocoapi.bmwgroup.us/eadrax-vcs/v4/vehicles",
+                            "path": [
+                                "eadrax-vcs",
+                                "v4",
+                                "vehicles"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "cocoapi",
+                                "bmwgroup",
+                                "us"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "x-correlation-id",
+                                "value": "{{#guid}}"
+                            },
+                            {
+                                "key": "bmw-correlation-id",
+                                "value": "{{#guid}}"
+                            },
+                            {
+                                "key": "user-agent",
+                                "value": "Dart/2.16 (dart:io)"
+                            },
+                            {
+                                "key": "x-user-agent",
+                                "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+                            },
+                            {
+                                "key": "bmw-current-date",
+                                "value": "{{#date, 'YYYY-MM-DD hh:mm:ss'}}"
+                            }
+                        ],
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{accessToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "State",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://cocoapi.bmwgroup.us/eadrax-vcs/v4/vehicles/state",
+                            "path": [
+                                "eadrax-vcs",
+                                "v4",
+                                "vehicles",
+                                "state"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "cocoapi",
+                                "bmwgroup",
+                                "us"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "x-correlation-id",
+                                "value": "{{#guid}}"
+                            },
+                            {
+                                "key": "bmw-correlation-id",
+                                "value": "{{#guid}}"
+                            },
+                            {
+                                "key": "user-agent",
+                                "value": "Dart/2.16 (dart:io)"
+                            },
+                            {
+                                "key": "x-user-agent",
+                                "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+                            },
+                            {
+                                "key": "bmw-vin",
+                                "value": "{{vin}}"
+                            },
+                            {
+                                "key": "bmw-current-date",
+                                "value": "{{#date, 'YYYY-MM-DD hh:mm:ss'}}"
+                            }
+                        ],
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{accessToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Image",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://cocoapi.bmwgroup.us/eadrax-ics/v3/presentation/vehicles/:vin/images?carView=SideViewLeft",
+                            "query": [
+                                {
+                                    "key": "carView",
+                                    "value": "SideViewLeft"
+                                },
+                                {
+                                    "key": "carView",
+                                    "value": "VehicleStatus",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "carView",
+                                    "value": "AngleSideViewForty",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "carView",
+                                    "value": "AngleSideViewSixty",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "carView",
+                                    "value": "FrontView",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "carView",
+                                    "value": "RearView",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "carView",
+                                    "value": "Dashboard",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "carView",
+                                    "value": "DriverDoor",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "carView",
+                                    "value": "FrontLeft",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "carView",
+                                    "value": "FrontRight",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "carView",
+                                    "value": "RearRight",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "carView",
+                                    "value": "RearLeft",
+                                    "disabled": true
+                                }
+                            ],
+                            "variable": [
+                                {
+                                    "key": "vin",
+                                    "value": "{{vin}}"
+                                }
+                            ],
+                            "path": [
+                                "eadrax-ics",
+                                "v3",
+                                "presentation",
+                                "vehicles",
+                                ":vin",
+                                "images"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "cocoapi",
+                                "bmwgroup",
+                                "us"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "x-correlation-id",
+                                "value": "{{#guid}}"
+                            },
+                            {
+                                "key": "bmw-correlation-id",
+                                "value": "{{#guid}}"
+                            },
+                            {
+                                "key": "user-agent",
+                                "value": "Dart/2.16 (dart:io)"
+                            },
+                            {
+                                "key": "x-user-agent",
+                                "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+                            },
+                            {
+                                "key": "bmw-vin",
+                                "value": "{{vin}}"
+                            },
+                            {
+                                "key": "bmw-current-date",
+                                "value": "{{#date, 'YYYY-MM-DD hh:mm:ss'}}"
+                            }
+                        ],
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{accessToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Dealers",
+            "item": [
+                {
+                    "name": "Dealers",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://www.bmwusa.com/api/dealers/maco/:zip",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "zip",
+                                    "value": "90210"
+                                }
+                            ],
+                            "path": [
+                                "api",
+                                "dealers",
+                                "maco",
+                                ":zip"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "www",
+                                "bmwusa",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "INOP",
+            "item": [
+                {
+                    "name": "Vehicle Profile",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://mygarage.bmwusa.com/bin/api/forward?gcid={{gcid}}&targetURL=/mybmw/resources/vehicleprofile/getvehicleProfile&vin={{vin}}",
+                            "query": [
+                                {
+                                    "key": "gcid",
+                                    "value": "{{gcid}}"
+                                },
+                                {
+                                    "key": "targetURL",
+                                    "value": "/mybmw/resources/vehicleprofile/getvehicleProfile"
+                                },
+                                {
+                                    "key": "vin",
+                                    "value": "{{vin}}"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "bin",
+                                "api",
+                                "forward"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "mygarage",
+                                "bmwusa",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "CD",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://mygarage.bmwusa.com/bin/mybmw/cd?vin={{vin}}&target=getPhoneNumber",
+                            "query": [
+                                {
+                                    "key": "vin",
+                                    "value": "{{vin}}"
+                                },
+                                {
+                                    "key": "target",
+                                    "value": "getPhoneNumber"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "bin",
+                                "mybmw",
+                                "cd"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "mygarage",
+                                "bmwusa",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "gcid={{gcid}},token={{accessToken}},vin={{vin}}",
+                                "disabled": true
+                            },
+                            {
+                                "key": "Accept-Language",
+                                "value": "en-US",
+                                "disabled": true
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Security Question",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://mygarage.bmwusa.com/bin/my-garage-services/connected-drive/mapping?brand=BM&property=relationship",
+                            "query": [
+                                {
+                                    "key": "brand",
+                                    "value": "BM"
+                                },
+                                {
+                                    "key": "property",
+                                    "value": "relationship"
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "bin",
+                                "my-garage-services",
+                                "connected-drive",
+                                "mapping"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "mygarage",
+                                "bmwusa",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "gcid={{gcid}},token={{accessToken}},vin={{vin}}"
+                            },
+                            {
+                                "key": "Accept-Language",
+                                "value": "en-US"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
