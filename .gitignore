@@ -8,3 +8,4 @@ thunderActivity.json
 
 # File Types
 *.ini
+.env

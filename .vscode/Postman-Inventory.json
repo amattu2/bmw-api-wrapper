@@ -1,0 +1,255 @@
+{
+    "info": {
+        "name": "Inventory",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "bmwusa.com",
+            "item": [
+                {
+                    "name": "Token",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://inventoryservices.bmwdealerprograms.com/token",
+                            "path": [
+                                "token"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "inventoryservices",
+                                "bmwdealerprograms",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "grant_type",
+                                    "value": "authorization_code",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "username",
+                                    "value": "BMWInventory@criticalmass.com"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "1nv3nt0ry!2020"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Vehicle",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://inventoryservices.bmwdealerprograms.com/vehicle",
+                            "path": [
+                                "vehicle"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "inventoryservices",
+                                "bmwdealerprograms",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"pageIndex\": 0,\n  \"PageSize\": 20,\n  \"postalCode\": \"90210\",\n  \"radius\": 0,\n  \"sortBy\": null,\n  \"sortDirection\": null,\n  \"formatResponse\": false,\n  \"includeFacets\": true,\n  \"includeDealers\": true,\n  \"includeVehicles\": true,\n  \"filters\": [\n    {\n      \"name\": \"Year\",\n      \"values\": [\n        \"2009\",\n        \"2015\",\n        \"2022\"\n      ]\n    },\n    {\n      \"name\": \"Odometer\",\n      \"values\": [\"50,000 or less\"]\n    }\n  ]\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyNSIsInVuaXF1ZV9uYW1lIjoiQk1XSW52ZW50b3J5QGNyaXRpY2FsbWFzcy5jb20iLCJqdGkiOiJmMTcyMGQ4Yi05MDIwLTQzODAtYTEyZS04NDZhYjUzNGQzN2EiLCJpYXQiOiIyLzI3LzIwMjMgNjoxOTo0MyBQTSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFQSSIsIm5iZiI6MTY3NzUyMTk4MywiZXhwIjoxNjc3NjA4MzgzLCJpc3MiOiJTaGlmdERpZ2l0YWwifQ.kKqnGeO0syUHyeZc8HdI7BWgmuOVVhL4HFSuNNFAjxM",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Model List",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://configure.bmwusa.com/UBYOConfigurator/v4/BM/modellist",
+                            "path": [
+                                "UBYOConfigurator",
+                                "v4",
+                                "BM",
+                                "modellist"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "configure",
+                                "bmwusa",
+                                "com"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "miniusa.com",
+            "item": [
+                {
+                    "name": "Get Available Features",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://www.miniusa.com/bin/services/gateway.inventory.json/v1/inventory-search-service/graphql",
+                            "path": [
+                                "bin",
+                                "services",
+                                "gateway.inventory.json",
+                                "v1",
+                                "inventory-search-service",
+                                "graphql"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "www",
+                                "miniusa",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "graphql",
+                            "graphql": {
+                                "query": "query inventory {\n  getAvailableFeatures(\n    brand: MI, \n    zip: \"90210\",\n    bucket: BYO,\n    types: [PACKAGES, OPTIONS, PAINTS, UPHOLSTERIES],\n    filter: {\n      locatorRange: 10 minPrice: 0\n      excludeStopSale: true\n      sold: false\n      used: true\n      }\n  ) {\n    type\n    features {\n      name\n      code\n      cosyURL\n      isStandard\n    }\n  }\n}"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Get Filter Options",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://www.miniusa.com/bin/services/gateway.inventory.json/v1/inventory-search-service/graphql",
+                            "path": [
+                                "bin",
+                                "services",
+                                "gateway.inventory.json",
+                                "v1",
+                                "inventory-search-service",
+                                "graphql"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "www",
+                                "miniusa",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "graphql",
+                            "graphql": {
+                                "query": "query inventory {\n      getFilterableOptions(brand: MI) {\n        dealerIds\n        models{\n          code\n          name\n        }\n        modelRange {\n            code\n            name\n        }\n        minPrice\n        maxPrice\n        minModelYear\n        maxModelYear\n        engineDriveTypes {\n          code\n          name\n        }\n        fuelTypes {\n          code\n          name\n        }\n        transmissionTypes\n      }\n    }"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Get Inventory",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://www.miniusa.com/bin/services/gateway.inventory.json/v1/inventory-search-service/graphql",
+                            "path": [
+                                "bin",
+                                "services",
+                                "gateway.inventory.json",
+                                "v1",
+                                "inventory-search-service",
+                                "graphql"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "www",
+                                "miniusa",
+                                "com"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "graphql",
+                            "graphql": {
+                                "query": "query inventory {\n      getInventory(\n        brand:MI, ,\n        zip: \"90210\",\n        bucket: BYO,\n      filter: {\n        locatorRange: 10\n        excludeStopSale: true\n        sold: false\n        used: true\n        minPrice: 0\n      },\n      sorting: [{order: ASC, criteria: DISTANCE_TO_LOCATOR_ZIP},{order:ASC,criteria:PRICE}]\n      pagination: {pageIndex: 1,\n      pageSize: 24}) {\n        numberOfFilteredVehicles\n        pageNumber\n        totalPages\n        errorCode\n        dealerInfo {\n          centerID\n          newVehicleSales {\n            dealerName\n            distance\n            longitude\n            locationID\n            dealerURL\n            phoneNumber\n            address {\n              lineOne\n              lineTwo\n              city\n              state\n              zipcode\n            }\n          }\n          certifiedPreowned {\n            dealerName\n            distance\n            longitude\n            locationID\n            dealerURL\n            phoneNumber\n            address {\n              lineOne\n              lineTwo\n              city\n              state\n              zipcode\n            }\n          }\n        }\n        result {\n          name\n          modelYear\n          vehicleDetailsPage\n          milesPerGallon\n          milesPerGallonEqv\n          code\n          agCode\n          engineDriveType {\n            name\n          }\n          modelRange {\n            code\n            name\n          }\n          qualifiedModelCode\n          totalMsrp\n          internetPrice\n          dealerId\n          dealerLocation\n          orderStatus\n          vin\n          options {\n            name\n            code\n            isPaint\n            isUpholstery\n            isTrim\n          }\n          vehicleDetailsPage\n          fuelType\n          usedCarType\n          exteriorColorCode\n          exteriorColorDescription\n          interiorColorCode\n          interiorColorDescription\n          mileage\n          images\n        }\n      }\n    }"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

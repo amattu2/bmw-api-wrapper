@@ -1,6 +1,6 @@
 {
     "info": {
-        "name": "Collection",
+        "name": "VCS / My Garage",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
     },
@@ -59,8 +59,7 @@
                             },
                             {
                                 "key": "Accept",
-                                "value": "*/*",
-                                "disabled": true
+                                "value": "application/json"
                             }
                         ]
                     }
@@ -211,7 +210,7 @@
                                 },
                                 {
                                     "key": "authorization",
-                                    "value": "LFmE7zi3BfP0KsDVwtvsOtpYpvM.*AAJTSQACMDIAAlNLABw2VHBsM0E3aFdzWXdjVHQ5UnpXaFZQdktDNnc9AAR0eXBlAANDVFMAAlMxAAIwMQ..*"
+                                    "value": "{{authorization}}"
                                 }
                             ]
                         }
@@ -251,7 +250,7 @@
                                 },
                                 {
                                     "key": "code",
-                                    "value": "y5tRuALl0u1y1XRTnsDs98br2JE"
+                                    "value": "{{code}}"
                                 },
                                 {
                                     "key": "code_verifier",
@@ -260,6 +259,69 @@
                                 {
                                     "key": "grant_type",
                                     "value": "authorization_code"
+                                }
+                            ]
+                        },
+                        "auth": {
+                            "type": "basic",
+                            "basic": [
+                                {
+                                    "key": "username",
+                                    "value": "{{clientId}}",
+                                    "type": "string"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "{{clientSecret}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Refresh",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{tokenEndpoint}}",
+                            "host": [
+                                "{{tokenendpoint}}"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "user-agent",
+                                "value": "Dart/2.16 (dart:io)"
+                            },
+                            {
+                                "key": "x-user-agent",
+                                "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "scope",
+                                    "value": "{{scopes}}"
+                                },
+                                {
+                                    "key": "redirect_uri",
+                                    "value": "{{returnUrl}}"
+                                },
+                                {
+                                    "key": "grant_type",
+                                    "value": "refresh_token"
+                                },
+                                {
+                                    "key": "refresh_token",
+                                    "value": "{{refreshToken}}"
                                 }
                             ]
                         },

@@ -1,7 +1,7 @@
 [
   {
     "_id": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
-    "colName": "Collection",
+    "colName": "VCS / My Garage",
     "created": "2023-02-24T22:36:12.827Z",
     "sortNum": 10000,
     "folders": [
@@ -31,7 +31,7 @@
         "name": "INOP",
         "containerId": "",
         "created": "2023-02-26T22:50:06.351Z",
-        "sortNum": 60000
+        "sortNum": 100000
       },
       {
         "_id": "3ff89700-f1fc-4706-9af2-2df3312407ec",
@@ -39,6 +39,35 @@
         "containerId": "",
         "created": "2023-02-26T23:36:03.009Z",
         "sortNum": 55000
+      }
+    ],
+    "settings": {
+      "headers": [],
+      "tests": [],
+      "scripts": [
+        "../utils.js"
+      ]
+    }
+  },
+  {
+    "_id": "9a709c6d-abb6-4b8c-9b4b-3812a8de7b90",
+    "colName": "Inventory",
+    "created": "2023-02-27T18:35:47.726Z",
+    "sortNum": 20000,
+    "folders": [
+      {
+        "_id": "b67fe3d2-369e-4a02-84fc-a799513bf696",
+        "name": "bmwusa.com",
+        "containerId": "",
+        "created": "2023-02-27T18:44:28.019Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "79305ff6-1442-4d13-b18a-f7d65dbd6b60",
+        "name": "miniusa.com",
+        "containerId": "",
+        "created": "2023-02-27T18:44:38.929Z",
+        "sortNum": 20000
       }
     ]
   }

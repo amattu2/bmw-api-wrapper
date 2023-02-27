@@ -8,7 +8,7 @@
     "method": "GET",
     "sortNum": 7500,
     "created": "2023-02-26T15:11:55.369Z",
-    "modified": "2023-02-27T00:55:38.106Z",
+    "modified": "2023-02-27T13:49:18.542Z",
     "headers": [
       {
         "name": "ocp-apim-subscription-key",
@@ -40,8 +40,7 @@
       },
       {
         "name": "Accept",
-        "value": "*/*",
-        "isDisabled": true
+        "value": "application/json"
       }
     ],
     "params": [],
@@ -100,7 +99,7 @@
     "method": "POST",
     "sortNum": 17500,
     "created": "2023-02-26T15:50:37.572Z",
-    "modified": "2023-02-26T20:08:37.226Z",
+    "modified": "2023-02-27T14:14:24.862Z",
     "headers": [
       {
         "name": "user-agent",
@@ -182,7 +181,7 @@
       },
       {
         "type": "set-env-var",
-        "custom": "json.redirect_to",
+        "custom": "json.redirect_to | getQueryParam(\"authorization\")",
         "action": "setto",
         "value": "{{authorization}}"
       }
@@ -197,7 +196,7 @@
     "method": "POST",
     "sortNum": 27500,
     "created": "2023-02-26T16:19:23.722Z",
-    "modified": "2023-02-27T00:22:57.083Z",
+    "modified": "2023-02-27T14:30:21.726Z",
     "headers": [
       {
         "name": "user-agent",
@@ -252,7 +251,7 @@
         },
         {
           "name": "authorization",
-          "value": "LFmE7zi3BfP0KsDVwtvsOtpYpvM.*AAJTSQACMDIAAlNLABw2VHBsM0E3aFdzWXdjVHQ5UnpXaFZQdktDNnc9AAR0eXBlAANDVFMAAlMxAAIwMQ..*"
+          "value": "{{authorization}}"
         }
       ]
     },
@@ -268,6 +267,12 @@
         "custom": "location",
         "action": "contains",
         "value": "code="
+      },
+      {
+        "type": "set-env-var",
+        "custom": "header.location | replace(\"com.bmw.connected://oauth\", \"\") |  getQueryParam(\"code\")",
+        "action": "setto",
+        "value": "{{code}}"
       }
     ]
   },
@@ -280,7 +285,7 @@
     "method": "POST",
     "sortNum": 37500,
     "created": "2023-02-26T16:45:21.845Z",
-    "modified": "2023-02-27T00:23:11.870Z",
+    "modified": "2023-02-27T14:30:39.452Z",
     "headers": [
       {
         "name": "user-agent",
@@ -307,7 +312,7 @@
         },
         {
           "name": "code",
-          "value": "y5tRuALl0u1y1XRTnsDs98br2JE"
+          "value": "{{code}}"
         },
         {
           "name": "code_verifier",
@@ -1123,5 +1128,311 @@
         "value": "application/json"
       }
     ]
+  },
+  {
+    "_id": "820a22a3-2e32-401f-8615-211c591c2767",
+    "colId": "95ce4ec2-9de0-4089-9aa1-f488d7fc05f7",
+    "containerId": "ff52b8de-d8d2-406b-9944-74f745ff4f66",
+    "name": "Refresh",
+    "url": "{{tokenEndpoint}}",
+    "method": "POST",
+    "sortNum": 47500,
+    "created": "2023-02-27T17:55:09.420Z",
+    "modified": "2023-02-27T18:07:53.556Z",
+    "headers": [
+      {
+        "name": "user-agent",
+        "value": "Dart/2.16 (dart:io)"
+      },
+      {
+        "name": "x-user-agent",
+        "value": "android(SP1A.210812.016.C1);bmw;2.12.0(19883);na"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "scope",
+          "value": "{{scopes}}"
+        },
+        {
+          "name": "redirect_uri",
+          "value": "{{returnUrl}}"
+        },
+        {
+          "name": "grant_type",
+          "value": "refresh_token"
+        },
+        {
+          "name": "refresh_token",
+          "value": "{{refreshToken}}"
+        }
+      ]
+    },
+    "auth": {
+      "type": "basic",
+      "basic": {
+        "username": "{{clientId}}",
+        "password": "{{clientSecret}}"
+      }
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.access_token",
+        "action": "setto",
+        "value": "{{accessToken}}"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.refresh_token",
+        "action": "setto",
+        "value": "{{refreshToken}}"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.id_token",
+        "action": "setto",
+        "value": "{{idToken}}"
+      },
+      {
+        "type": "set-env-var",
+        "custom": "json.gcid",
+        "action": "setto",
+        "value": "{{gcid}}"
+      }
+    ]
+  },
+  {
+    "_id": "e01ac45c-22d2-415c-8c36-a9b5513fcd7d",
+    "colId": "9a709c6d-abb6-4b8c-9b4b-3812a8de7b90",
+    "containerId": "b67fe3d2-369e-4a02-84fc-a799513bf696",
+    "name": "Vehicle",
+    "url": "https://inventoryservices.bmwdealerprograms.com/vehicle",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-02-27T18:18:27.342Z",
+    "modified": "2023-02-27T18:44:32.142Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"pageIndex\": 0,\n  \"PageSize\": 20,\n  \"postalCode\": \"90210\",\n  \"radius\": 0,\n  \"sortBy\": null,\n  \"sortDirection\": null,\n  \"formatResponse\": false,\n  \"includeFacets\": true,\n  \"includeDealers\": true,\n  \"includeVehicles\": true,\n  \"filters\": [\n    {\n      \"name\": \"Year\",\n      \"values\": [\n        \"2009\",\n        \"2015\",\n        \"2022\"\n      ]\n    },\n    {\n      \"name\": \"Odometer\",\n      \"values\": [\"50,000 or less\"]\n    }\n  ]\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyNSIsInVuaXF1ZV9uYW1lIjoiQk1XSW52ZW50b3J5QGNyaXRpY2FsbWFzcy5jb20iLCJqdGkiOiJmMTcyMGQ4Yi05MDIwLTQzODAtYTEyZS04NDZhYjUzNGQzN2EiLCJpYXQiOiIyLzI3LzIwMjMgNjoxOTo0MyBQTSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFQSSIsIm5iZiI6MTY3NzUyMTk4MywiZXhwIjoxNjc3NjA4MzgzLCJpc3MiOiJTaGlmdERpZ2l0YWwifQ.kKqnGeO0syUHyeZc8HdI7BWgmuOVVhL4HFSuNNFAjxM"
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      }
+    ]
+  },
+  {
+    "_id": "c2f77f0d-b4c8-47c2-bd82-4096aa7ec3de",
+    "colId": "9a709c6d-abb6-4b8c-9b4b-3812a8de7b90",
+    "containerId": "b67fe3d2-369e-4a02-84fc-a799513bf696",
+    "name": "Token",
+    "url": "https://inventoryservices.bmwdealerprograms.com/token",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-02-27T18:25:31.518Z",
+    "modified": "2023-02-27T18:44:29.559Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "grant_type",
+          "value": "authorization_code",
+          "isDisabled": true
+        },
+        {
+          "name": "username",
+          "value": "BMWInventory@criticalmass.com"
+        },
+        {
+          "name": "password",
+          "value": "1nv3nt0ry!2020"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "contains",
+        "value": "application/json"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.access_token",
+        "action": "istype",
+        "value": "string"
+      }
+    ]
+  },
+  {
+    "_id": "307579f9-b703-49cc-a460-91302373b5b5",
+    "colId": "9a709c6d-abb6-4b8c-9b4b-3812a8de7b90",
+    "containerId": "79305ff6-1442-4d13-b18a-f7d65dbd6b60",
+    "name": "Get Available Features",
+    "url": "https://www.miniusa.com/bin/services/gateway.inventory.json/v1/inventory-search-service/graphql",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-02-27T18:44:59.561Z",
+    "modified": "2023-02-27T18:51:46.195Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "graphql",
+      "raw": "",
+      "form": [],
+      "graphql": {
+        "query": "query inventory {\n  getAvailableFeatures(\n    brand: MI, \n    zip: \"90210\",\n    bucket: BYO,\n    types: [PACKAGES, OPTIONS, PAINTS, UPHOLSTERIES],\n    filter: {\n      locatorRange: 10 minPrice: 0\n      excludeStopSale: true\n      sold: false\n      used: true\n      }\n  ) {\n    type\n    features {\n      name\n      code\n      cosyURL\n      isStandard\n    }\n  }\n}"
+      }
+    },
+    "tests": []
+  },
+  {
+    "_id": "4bf1642d-2aad-4e82-82ea-ec3f7fe5685b",
+    "colId": "9a709c6d-abb6-4b8c-9b4b-3812a8de7b90",
+    "containerId": "b67fe3d2-369e-4a02-84fc-a799513bf696",
+    "name": "Model List",
+    "url": "https://configure.bmwusa.com/UBYOConfigurator/v4/BM/modellist",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-02-27T18:45:56.225Z",
+    "modified": "2023-02-27T18:46:00.424Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "eb719b09-c34e-4ac5-a288-bbe5a416d04a",
+    "colId": "9a709c6d-abb6-4b8c-9b4b-3812a8de7b90",
+    "containerId": "79305ff6-1442-4d13-b18a-f7d65dbd6b60",
+    "name": "Get Filter Options",
+    "url": "https://www.miniusa.com/bin/services/gateway.inventory.json/v1/inventory-search-service/graphql",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-02-27T18:47:44.090Z",
+    "modified": "2023-02-27T18:51:08.015Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "graphql",
+      "raw": "",
+      "form": [],
+      "graphql": {
+        "query": "query inventory {\n      getFilterableOptions(brand: MI) {\n        dealerIds\n        models{\n          code\n          name\n        }\n        modelRange {\n            code\n            name\n        }\n        minPrice\n        maxPrice\n        minModelYear\n        maxModelYear\n        engineDriveTypes {\n          code\n          name\n        }\n        fuelTypes {\n          code\n          name\n        }\n        transmissionTypes\n      }\n    }"
+      }
+    },
+    "tests": []
+  },
+  {
+    "_id": "7bedaa4b-36d9-4e9c-8374-3f0ad9baa666",
+    "colId": "9a709c6d-abb6-4b8c-9b4b-3812a8de7b90",
+    "containerId": "79305ff6-1442-4d13-b18a-f7d65dbd6b60",
+    "name": "Get Inventory",
+    "url": "https://www.miniusa.com/bin/services/gateway.inventory.json/v1/inventory-search-service/graphql",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-02-27T18:52:28.124Z",
+    "modified": "2023-02-27T18:52:46.688Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "graphql",
+      "raw": "",
+      "form": [],
+      "graphql": {
+        "query": "query inventory {\n      getInventory(\n        brand:MI, ,\n        zip: \"90210\",\n        bucket: BYO,\n      filter: {\n        locatorRange: 10\n        excludeStopSale: true\n        sold: false\n        used: true\n        minPrice: 0\n      },\n      sorting: [{order: ASC, criteria: DISTANCE_TO_LOCATOR_ZIP},{order:ASC,criteria:PRICE}]\n      pagination: {pageIndex: 1,\n      pageSize: 24}) {\n        numberOfFilteredVehicles\n        pageNumber\n        totalPages\n        errorCode\n        dealerInfo {\n          centerID\n          newVehicleSales {\n            dealerName\n            distance\n            longitude\n            locationID\n            dealerURL\n            phoneNumber\n            address {\n              lineOne\n              lineTwo\n              city\n              state\n              zipcode\n            }\n          }\n          certifiedPreowned {\n            dealerName\n            distance\n            longitude\n            locationID\n            dealerURL\n            phoneNumber\n            address {\n              lineOne\n              lineTwo\n              city\n              state\n              zipcode\n            }\n          }\n        }\n        result {\n          name\n          modelYear\n          vehicleDetailsPage\n          milesPerGallon\n          milesPerGallonEqv\n          code\n          agCode\n          engineDriveType {\n            name\n          }\n          modelRange {\n            code\n            name\n          }\n          qualifiedModelCode\n          totalMsrp\n          internetPrice\n          dealerId\n          dealerLocation\n          orderStatus\n          vin\n          options {\n            name\n            code\n            isPaint\n            isUpholstery\n            isTrim\n          }\n          vehicleDetailsPage\n          fuelType\n          usedCarType\n          exteriorColorCode\n          exteriorColorDescription\n          interiorColorCode\n          interiorColorDescription\n          mileage\n          images\n        }\n      }\n    }"
+      }
+    },
+    "tests": []
   }
 ]
